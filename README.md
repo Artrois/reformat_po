@@ -1,6 +1,6 @@
 # Reformat PO
 This project is created for custom PO file reformatting.
-It expects:
+It expects a PO file of koi8-r encoding:
 ```
 #   
 msgid   "test"
@@ -11,7 +11,7 @@ msgid   "writer"
 msgstr   "информации"
 ```
 
-out put will be:
+out put will be in UTF-8:
 ```
 msgid            msgstr_debug          msgstr_user 
 # 
@@ -20,7 +20,7 @@ msgid            msgstr_debug          msgstr_user
 "writer" "writer" "информации"
 ```
 
-It considers koi8-r encoding.
+
 
 ## Usage
 ```
@@ -29,4 +29,8 @@ node translate_PO_YML.js [source.po] [target.po]
 See example:
 ```
 node ./reformat_PO.js ./anzeigetexte.user.muster.po ./ersetze_anzeigetexte_user.po
+```
+As the target file will be finally in utf-8 you may consider to use iconv to convert the target file to koi8-r:
+```
+iconv -f utf-8 -t koi8-r file1.txt > file2.txt
 ```
